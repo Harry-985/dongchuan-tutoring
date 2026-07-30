@@ -1,0 +1,13 @@
+# 数据库文件（含示例数据，不提交）
+*.db
+*.db-shm
+*.db-wal
+
+# Python
+__pycache__/
+*.pyc
+venv/
+
+# IDE
+.vscode/
+.idea/
