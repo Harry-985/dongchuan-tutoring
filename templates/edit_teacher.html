@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>编辑老师 - {{ teacher.name }}</title>
+    <style>
+        * { margin:0; padding:0; box-sizing:border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; background:#F9FAFB; }
+        .container { max-width:500px; margin:0 auto; padding:16px; }
+        h2 { font-size:20px; margin-bottom:16px; }
+        .form-group { margin-bottom:14px; }
+        label { display:block; font-size:13px; font-weight:600; color:#374151; margin-bottom:4px; }
+        input, textarea, select {
+            width:100%; padding:10px 12px; border:2px solid #E5E7EB; border-radius:8px;
+            font-size:14px; font-family: inherit; outline:none;
+        }
+        input:focus, textarea:focus, select:focus { border-color:#4F46E5; }
+        textarea { min-height:80px; resize:vertical; }
+        .hint { font-size:11px; color:#9CA3AF; margin-top:2px; }
+        .btn {
+            width:100%; padding:14px; background:#4F46E5; color:white; border:none;
+            border-radius:10px; font-size:16px; font-weight:600; margin-top:8px; cursor:pointer;
+        }
+        .btn-delete {
+            width:100%; padding:14px; background:#FEE2E2; color:#EF4444; border:none;
+            border-radius:10px; font-size:14px; font-weight:600; margin-top:8px; cursor:pointer;
+            text-align:center; display:block; text-decoration:none;
+        }
+        .btn-back { display:inline-block; margin-bottom:12px; color:#6B7280; text-decoration:none; font-size:14px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="/admin" class="btn-back">← 返回</a>
+        <h2>✏️ 编辑：{{ teacher.name }}</h2>
+        <form method="post">
+            <div class="form-group">
+                <label>姓名 *</label>
+                <input name="name" required value="{{ teacher.name }}">
+            </div>
+            <div class="form-group">
+                <label>头像 URL</label>
+                <input name="avatar" value="{{ teacher.avatar }}">
+            </div>
+            <div class="form-group">
+                <label>教授科目 *</label>
+                <input name="subjects" required value="{{ teacher.subjects }}">
+            </div>
+            <div class="form-group">
+                <label>适合年级 *</label>
+                <input name="grades" required value="{{ teacher.grades }}">
+            </div>
+            <div class="form-group">
+                <label>每小时价格 (元) *</label>
+                <input name="price_per_hour" type="number" value="{{ teacher.price_per_hour }}" required>
+            </div>
+            <div class="form-group">
+                <label>教学经验</label>
+                <input name="experience" value="{{ teacher.experience or '' }}">
+            </div>
+            <div class="form-group">
+                <label>所在地区</label>
+                <input name="location" value="{{ teacher.location or '' }}">
+            </div>
+            <div class="form-group">
+                <label>电话号码</label>
+                <input name="phone" value="{{ teacher.phone or '' }}">
+            </div>
+            <div class="form-group">
+                <label>微信号</label>
+                <input name="wechat_id" value="{{ teacher.wechat_id or '' }}">
+            </div>
+            <div class="form-group">
+                <label>个人介绍</label>
+                <textarea name="description">{{ teacher.description or '' }}</textarea>
+            </div>
+            <div class="form-group">
+                <label>评分 (1-5)</label>
+                <input name="rating" type="number" step="0.1" min="1" max="5" value="{{ teacher.rating }}">
+            </div>
+            <div class="form-group">
+                <label style="display:flex;align-items:center;gap:8px;">
+                    <input type="checkbox" name="is_active" style="width:auto;"
+                           {{ 'checked' if teacher.is_active else '' }}> 上架展示
+                </label>
+            </div>
+            <button type="submit" class="btn">保存修改</button>
+        </form>
+        <a href="/admin/delete/{{ teacher.id }}" class="btn-delete"
+           onclick="return confirm('确定删除 {{ teacher.name }} 吗？此操作不可撤销。')">
+            🗑️ 删除此老师
+        </a>
+    </div>
+</body>
+</html>

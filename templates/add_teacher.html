@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>添加老师</title>
+    <style>
+        * { margin:0; padding:0; box-sizing:border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; background:#F9FAFB; }
+        .container { max-width:500px; margin:0 auto; padding:16px; }
+        h2 { font-size:20px; margin-bottom:16px; }
+        .form-group { margin-bottom:14px; }
+        label { display:block; font-size:13px; font-weight:600; color:#374151; margin-bottom:4px; }
+        input, textarea, select {
+            width:100%; padding:10px 12px; border:2px solid #E5E7EB; border-radius:8px;
+            font-size:14px; font-family: inherit; outline:none;
+        }
+        input:focus, textarea:focus, select:focus { border-color:#4F46E5; }
+        textarea { min-height:80px; resize:vertical; }
+        .hint { font-size:11px; color:#9CA3AF; margin-top:2px; }
+        .btn {
+            width:100%; padding:14px; background:#4F46E5; color:white; border:none;
+            border-radius:10px; font-size:16px; font-weight:600; margin-top:8px; cursor:pointer;
+        }
+        .btn-back { display:inline-block; margin-bottom:12px; color:#6B7280; text-decoration:none; font-size:14px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="/admin" class="btn-back">← 返回</a>
+        <h2>➕ 添加老师</h2>
+        <form method="post">
+            <div class="form-group">
+                <label>姓名 *</label>
+                <input name="name" required placeholder="如：张老师">
+            </div>
+            <div class="form-group">
+                <label>头像 URL</label>
+                <input name="avatar" placeholder="可留空，显示姓氏首字">
+            </div>
+            <div class="form-group">
+                <label>教授科目 *</label>
+                <input name="subjects" required placeholder="如：数学,物理（多个用逗号分隔）">
+                <span class="hint">多个科目用逗号分隔</span>
+            </div>
+            <div class="form-group">
+                <label>适合年级 *</label>
+                <input name="grades" required placeholder="如：初三,高一,高二">
+                <span class="hint">多个年级用逗号分隔</span>
+            </div>
+            <div class="form-group">
+                <label>每小时价格 (元) *</label>
+                <input name="price_per_hour" type="number" value="100" required>
+            </div>
+            <div class="form-group">
+                <label>教学经验</label>
+                <input name="experience" placeholder="如：5年教学经验，曾在XX机构任教">
+            </div>
+            <div class="form-group">
+                <label>所在地区</label>
+                <input name="location" placeholder="如：市区 / 城北">
+            </div>
+            <div class="form-group">
+                <label>电话号码</label>
+                <input name="phone" placeholder="如：138****1234">
+            </div>
+            <div class="form-group">
+                <label>微信号</label>
+                <input name="wechat_id" placeholder="用于学生复制微信添加">
+                <span class="hint">填写后，学生可一键复制微信号添加好友</span>
+            </div>
+            <div class="form-group">
+                <label>个人介绍</label>
+                <textarea name="description" placeholder="介绍自己的教学风格、擅长方向等"></textarea>
+            </div>
+            <div class="form-group">
+                <label>评分 (1-5)</label>
+                <input name="rating" type="number" step="0.1" min="1" max="5" value="5.0">
+            </div>
+            <div class="form-group">
+                <label style="display:flex;align-items:center;gap:8px;">
+                    <input type="checkbox" name="is_active" checked style="width:auto;"> 立马上架
+                </label>
+            </div>
+            <button type="submit" class="btn">添加老师</button>
+        </form>
+    </div>
+</body>
+</html>
