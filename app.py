@@ -1,4 +1,4 @@
-"""本地家教中介平台 - MVP"""
+"东川家教信息栏"
 import sqlite3
 import os
 from flask import Flask, render_template, request, redirect, jsonify, session

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>东川助学平台 - 宣传单</title>
+    <title>东川家教信息栏 - 宣传单</title>
     <style>
         @page { size: 210mm 297mm; margin: 0; }
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -197,7 +197,7 @@
 
         /* ── CTA ── */
         .cta-box {
-            margin: 0 60px 16px;
+            margin: 0 60px 12px;
             padding: 18px;
             background: linear-gradient(135deg, #EEF2FF, #F5F3FF);
             border-radius: 14px; text-align: center;
@@ -220,10 +220,11 @@
         .footer-bar .wx-label { font-size: 10px; opacity: 0.5; letter-spacing: 1px; margin-bottom: 2px; }
         .footer-bar .wx-id { font-size: 18px; font-weight: 700; letter-spacing: 1.5px; }
         .footer-bar .copy { font-size: 10px; opacity: 0.4; }
-        .footer-bar .qr-img {
-            width: 55px; height: 55px;
-            background: white; border-radius: 8px;
-            padding: 3px;
+        .qr-img-big {
+            width: 90px; height: 90px;
+            background: white; border-radius: 10px;
+            padding: 4px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
         }
 
         /* ── Floating accent shapes ── */
@@ -262,8 +263,8 @@
             <div class="orb-2"></div>
             <div class="hero-content">
                 <div class="tagline">昆明 · 东川区</div>
-                <h1>东川<span>助学</span>平台</h1>
-                <p class="slogan">本地名师上门 · 微信直连 · 家长免费找老师</p>
+                <h1>东川<span>家教</span>信息栏</h1>
+                <p class="slogan">本地家教信息汇总 · 自行沟通 · 平台不参与交易</p>
                 <div class="hero-cards">
                     <div class="hero-card highlight">
                         <div class="emoji">👨‍🏫</div>
@@ -310,6 +311,20 @@
         </div>
         <p class="pricing-strip">小学到高中全年级覆盖 · 一对一上门辅导 · 因材施教</p>
 
+        <!-- CTA + QR -->
+        <div class="cta-box">
+            <div style="display:flex;align-items:center;justify-content:center;gap:36px;">
+                <div style="text-align:left;">
+                    <div class="url">🌐 dczhuxue.cn</div>
+                    <div class="url"><small>手机浏览器打开<br>微信内可直接访问</small></div>
+                </div>
+                <div style="text-align:center;">
+                    <img class="qr-img-big" src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://needs-defense-players-bought.trycloudflare.com" alt="扫码访问">
+                    <div style="font-size:12px;color:#6B7280;margin-top:4px;font-weight:600;">📱 微信扫码访问</div>
+                </div>
+            </div>
+        </div>
+
         <!-- Steps -->
         <div class="steps-wrap">
             <h3>三步找到好老师</h3>
@@ -332,26 +347,16 @@
             </div>
         </div>
 
-        <!-- CTA -->
-        <div class="cta-box">
-            <div class="url">🌐 dczhuxue.cn</div>
-            <div class="url"><small>手机浏览器打开，微信内可直接访问</small></div>
-            <p class="hint">或扫描下方二维码</p>
-        </div>
-
         <!-- Footer -->
         <div class="footer-bar">
             <div>
                 <div class="wx-label">📱 咨询入驻 / 找老师</div>
                 <div class="wx-id">A2092006305</div>
             </div>
-            <div style="text-align:center;">
-                <img class="qr-img" src="https://api.qrserver.com/v1/create-qr-code/?size=120x120&data=https://set-difficulty-full-initiative.trycloudflare.com" alt="扫码访问">
-                <div style="font-size:9px;opacity:0.45;margin-top:3px;">扫码访问</div>
-            </div>
             <div class="copy">
-                昆明市东川区助学平台<br>
-                让每个孩子找到好老师
+                东川家教信息栏<br>
+                让每个孩子找到好老师<br>
+                <span style="font-size:8px;opacity:0.5;">免责声明：本站仅提供信息展示，不参与交易</span>
             </div>
         </div>
     </div>
