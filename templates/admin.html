@@ -87,6 +87,7 @@
             <thead>
                 <tr>
                     <th>姓名</th>
+                    <th>性别</th>
                     <th>科目</th>
                     <th>年级</th>
                     <th>价格/h</th>
@@ -100,6 +101,7 @@
                 {% for t in teachers %}
                 <tr>
                     <td><strong>{{ t.name }}</strong></td>
+                    <td>{{ t.gender or '-' }}</td>
                     <td>{{ t.subjects }}</td>
                     <td>{{ t.grades }}</td>
                     <td>¥{{ t.price_per_hour }}</td>

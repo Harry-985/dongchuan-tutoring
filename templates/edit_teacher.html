@@ -40,6 +40,14 @@
                 <input name="name" required value="{{ teacher.name }}">
             </div>
             <div class="form-group">
+                <label>性别</label>
+                <select name="gender" style="width:100%;padding:10px 12px;border:2px solid #E5E7EB;border-radius:8px;font-size:14px;">
+                    <option value="" {{ 'selected' if teacher.gender == '' else '' }}>未知</option>
+                    <option value="男" {{ 'selected' if teacher.gender == '男' else '' }}>男</option>
+                    <option value="女" {{ 'selected' if teacher.gender == '女' else '' }}>女</option>
+                </select>
+            </div>
+            <div class="form-group">
                 <label>头像 URL</label>
                 <input name="avatar" value="{{ teacher.avatar }}">
             </div>

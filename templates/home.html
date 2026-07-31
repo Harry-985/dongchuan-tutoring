@@ -8,6 +8,7 @@
         :root {
             --primary: #4F46E5;
             --primary-light: #EEF2FF;
+            --active: #ffffff;
             --gold: #F59E0B;
             --text: #1F2937;
             --text-light: #6B7280;
@@ -22,59 +23,106 @@
             background: var(--bg);
             color: var(--text);
             line-height: 1.5;
+            padding-bottom: 80px;
         }
         /* Header */
         header {
             background: linear-gradient(135deg, var(--primary), #7C3AED);
             color: white;
-            padding: 20px 16px 24px;
+            padding: 12px 16px 16px;
             position: sticky;
             top: 0;
             z-index: 100;
         }
-        header h1 {
-            font-size: 22px;
-            font-weight: 700;
-            margin-bottom: 4px;
-        }
-        header .subtitle {
-            font-size: 13px;
-            opacity: 0.85;
-            margin-bottom: 16px;
-        }
-        .search-box {
+        .header-row {
             display: flex;
-            gap: 8px;
-            flex-wrap: wrap;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 6px;
         }
-        .search-box select {
-            flex: 1;
-            min-width: 100px;
-            padding: 10px 12px;
+        .back-btn {
+            font-size: 22px;
+            text-decoration: none;
+            color: white;
+            padding: 4px 8px;
+            border-radius: 8px;
+            background: rgba(255,255,255,0.15);
+        }
+        header h1 { font-size: 20px; font-weight: 700; flex: 1; }
+        header .subtitle { font-size: 12px; opacity: 0.85; margin-bottom: 12px; margin-left: 44px; }
+        /* Filter pills */
+        .filter-section { margin-bottom: 10px; }
+        .filter-label {
+            font-size: 11px;
+            font-weight: 600;
+            opacity: 0.7;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 6px;
+        }
+        .filter-pills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+        .filter-pill {
+            padding: 6px 14px;
+            border-radius: 20px;
+            border: 1.5px solid rgba(255,255,255,0.3);
+            background: transparent;
+            color: white;
+            font-size: 13px;
+            cursor: pointer;
+            transition: all 0.15s;
+            white-space: nowrap;
+            font-family: inherit;
+            -webkit-tap-highlight-color: transparent;
+            user-select: none;
+        }
+        .filter-pill:active { transform: scale(0.95); }
+        .filter-pill.active {
+            background: white;
+            color: var(--primary);
+            border-color: white;
+            font-weight: 600;
+        }
+        /* Gender pills */
+        .gender-pill {
+            padding: 6px 14px;
+            border-radius: 20px;
+            border: 1.5px solid rgba(255,255,255,0.3);
+            background: transparent;
+            color: white;
+            font-size: 13px;
+            cursor: pointer;
+            transition: all 0.15s;
+            font-family: inherit;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+        }
+        .gender-pill.active { background: white; color: var(--primary); border-color: white; font-weight: 600; }
+        /* Grade select */
+        .grade-select {
+            width: 100%;
+            padding: 8px 12px;
             border-radius: 8px;
             border: none;
-            font-size: 14px;
-            background: rgba(255,255,255,0.95);
+            font-size: 13px;
+            background: rgba(255,255,255,0.15);
+            color: white;
             -webkit-appearance: none;
             appearance: none;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%236B7280' viewBox='0 0 16 16'%3E%3Cpath d='M8 11L3 6h10z'/%3E%3C/svg%3E");
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='white' viewBox='0 0 16 16'%3E%3Cpath d='M8 11L3 6h10z'/%3E%3C/svg%3E");
             background-repeat: no-repeat;
             background-position: right 10px center;
-            padding-right: 30px;
             cursor: pointer;
+            font-family: inherit;
         }
+        .grade-select option { color: #1F2937; }
         /* Main */
-        .container {
-            max-width: 600px;
-            margin: 0 auto;
-            padding: 16px;
-        }
-        .count-bar {
-            font-size: 13px;
-            color: var(--text-light);
-            margin-bottom: 12px;
-            padding: 0 4px;
-        }
+        .container { max-width: 600px; margin: 0 auto; padding: 16px; }
+        .count-bar { font-size: 13px; color: var(--text-light); margin-bottom: 12px; }
         .count-bar span { font-weight: 600; color: var(--primary); }
         /* Teacher Card */
         .teacher-card {
@@ -90,100 +138,81 @@
         }
         .teacher-card:active { transform: scale(0.98); }
         .avatar {
-            width: 56px;
-            height: 56px;
-            border-radius: 50%;
-            background: var(--primary-light);
-            color: var(--primary);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 24px;
-            font-weight: 700;
-            flex-shrink: 0;
+            width: 56px; height: 56px; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 24px; font-weight: 700; flex-shrink: 0;
         }
-        .avatar img {
-            width: 100%;
-            height: 100%;
-            border-radius: 50%;
-            object-fit: cover;
-        }
+        .avatar.male { background: #DBEAFE; color: #2563EB; }
+        .avatar.female { background: #FCE7F3; color: #DB2777; }
+        .avatar img { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; }
         .card-body { flex: 1; min-width: 0; }
         .card-body .name {
-            font-size: 17px;
-            font-weight: 600;
-            display: flex;
-            align-items: center;
-            gap: 6px;
+            font-size: 17px; font-weight: 600;
+            display: flex; align-items: center; gap: 6px;
         }
+        .gender-icon { font-size: 14px; }
         .stars { color: var(--gold); font-size: 13px; }
         .tags { display: flex; flex-wrap: wrap; gap: 6px; margin: 8px 0; }
         .tag {
-            font-size: 12px;
-            padding: 3px 10px;
-            border-radius: 20px;
-            background: var(--primary-light);
-            color: var(--primary);
-            font-weight: 500;
+            font-size: 12px; padding: 3px 10px; border-radius: 20px;
+            background: var(--primary-light); color: var(--primary); font-weight: 500;
         }
-        .card-body .info {
-            font-size: 13px;
-            color: var(--text-light);
-        }
+        .card-body .info { font-size: 13px; color: var(--text-light); }
         .card-body .info span { margin-right: 10px; }
         .price {
-            font-size: 20px;
-            font-weight: 700;
-            color: #EF4444;
-            white-space: nowrap;
+            font-size: 20px; font-weight: 700; color: #EF4444; white-space: nowrap;
         }
         .price small { font-size: 12px; color: var(--text-light); font-weight: 400; }
         /* Contact bar */
         .contact-bar {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: white;
-            padding: 12px 16px;
+            position: fixed; bottom: 0; left: 0; right: 0;
+            background: white; padding: 12px 16px;
             box-shadow: 0 -2px 10px rgba(0,0,0,0.06);
-            text-align: center;
-            font-size: 13px;
-            color: var(--text-light);
+            text-align: center; font-size: 13px; color: var(--text-light);
         }
-        .contact-bar a {
-            color: var(--primary);
-            font-weight: 600;
-            text-decoration: none;
-            margin-left: 4px;
-        }
+        .contact-bar a { color: var(--primary); font-weight: 600; text-decoration: none; margin-left: 4px; }
     </style>
 </head>
 <body>
     <header>
-        <h1>📚 昆明市东川区助学平台</h1>
-        <p class="subtitle">本地优质家教，微信直接联系</p>
-        <div class="search-box">
-            <select id="subjectFilter" onchange="filter()">
-                <option value="">全部科目</option>
-                <option value="数学">数学</option>
-                <option value="语文">语文</option>
-                <option value="英语">英语</option>
-                <option value="物理">物理</option>
-                <option value="化学">化学</option>
-                <option value="生物">生物</option>
-            </select>
-            <select id="gradeFilter" onchange="filter()">
-                <option value="">全部年级</option>
-                <option value="小学">小学</option>
-                <option value="初一">初一</option>
-                <option value="初二">初二</option>
-                <option value="初三">初三</option>
-                <option value="高一">高一</option>
-                <option value="高二">高二</option>
-                <option value="高三">高三</option>
-            </select>
+        <div class="header-row">
+            <a href="javascript:history.back()" class="back-btn">←</a>
+            <h1>📚 昆明市东川区助学平台</h1>
         </div>
+        <p class="subtitle">本地优质家教，微信直接联系</p>
+        <!-- 科目分类按钮 -->
+        <div class="filter-section">
+            <div class="filter-label">📘 选择科目</div>
+            <div class="filter-pills" id="subjectPills">
+                <button class="filter-pill active" data-subject="" onclick="setSubject(this, '')">全部</button>
+                <button class="filter-pill" data-subject="数学" onclick="setSubject(this, '数学')">数学</button>
+                <button class="filter-pill" data-subject="语文" onclick="setSubject(this, '语文')">语文</button>
+                <button class="filter-pill" data-subject="英语" onclick="setSubject(this, '英语')">英语</button>
+                <button class="filter-pill" data-subject="物理" onclick="setSubject(this, '物理')">物理</button>
+                <button class="filter-pill" data-subject="化学" onclick="setSubject(this, '化学')">化学</button>
+                <button class="filter-pill" data-subject="生物" onclick="setSubject(this, '生物')">生物</button>
+            </div>
+        </div>
+        <!-- 男女筛选 -->
+        <div class="filter-section">
+            <div class="filter-label">👤 老师性别</div>
+            <div class="filter-pills" id="genderPills">
+                <button class="gender-pill active" data-gender="" onclick="setGender(this, '')">全部</button>
+                <button class="gender-pill" data-gender="男" onclick="setGender(this, '男')">👨 男老师</button>
+                <button class="gender-pill" data-gender="女" onclick="setGender(this, '女')">👩 女老师</button>
+            </div>
+        </div>
+        <!-- 年级下拉 -->
+        <select class="grade-select" id="gradeFilter" onchange="applyFilters()">
+            <option value="">全部年级</option>
+            <option value="小学">小学</option>
+            <option value="初一">初一</option>
+            <option value="初二">初二</option>
+            <option value="初三">初三</option>
+            <option value="高一">高一</option>
+            <option value="高二">高二</option>
+            <option value="高三">高三</option>
+        </select>
     </header>
 
     <div class="container">
@@ -191,8 +220,8 @@
         <div id="teacherList">
             {% for t in teachers %}
             <div class="teacher-card" onclick="location.href='/teacher/{{ t.id }}'"
-                 data-subjects="{{ t.subjects }}" data-grades="{{ t.grades }}">
-                <div class="avatar">
+                 data-subjects="{{ t.subjects }}" data-grades="{{ t.grades }}" data-gender="{{ t.gender }}">
+                <div class="avatar {{ 'male' if t.gender == '男' else 'female' if t.gender == '女' else '' }}">
                     {% if t.avatar %}
                     <img src="{{ t.avatar }}" alt="{{ t.name }}">
                     {% else %}
@@ -202,6 +231,7 @@
                 <div class="card-body">
                     <div class="name">
                         {{ t.name }}
+                        {% if t.gender == '男' %}<span class="gender-icon">👨</span>{% elif t.gender == '女' %}<span class="gender-icon">👩</span>{% endif %}
                         <span class="stars">★ {{ t.rating }}</span>
                     </div>
                     <div class="tags">
@@ -214,9 +244,7 @@
                         <span>📖 {{ t.grades }}</span>
                     </div>
                 </div>
-                <div class="price">
-                    ¥{{ t.price_per_hour }}<small>/时</small>
-                </div>
+                <div class="price">¥{{ t.price_per_hour }}<small>/时</small></div>
             </div>
             {% endfor %}
             {% if not teachers %}
@@ -233,15 +261,30 @@
     </div>
 
     <script>
-        function filter() {
-            const subject = document.getElementById('subjectFilter').value;
+        let currentSubject = '', currentGender = '';
+        function setSubject(btn, subject) {
+            currentSubject = subject;
+            document.querySelectorAll('#subjectPills button').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            applyFilters();
+        }
+        function setGender(btn, gender) {
+            currentGender = gender;
+            document.querySelectorAll('#genderPills button').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            applyFilters();
+        }
+        function applyFilters() {
             const grade = document.getElementById('gradeFilter').value;
             const cards = document.querySelectorAll('.teacher-card');
             let count = 0;
             cards.forEach(card => {
                 const subjs = card.dataset.subjects || '';
                 const grades = card.dataset.grades || '';
-                const match = (!subject || subjs.includes(subject)) && (!grade || grades.includes(grade));
+                const gender = card.dataset.gender || '';
+                const match = (!currentSubject || subjs.includes(currentSubject))
+                           && (!grade || grades.includes(grade))
+                           && (!currentGender || gender === currentGender);
                 card.style.display = match ? 'flex' : 'none';
                 if (match) count++;
             });

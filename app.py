@@ -14,6 +14,7 @@ def init_db():
         conn.execute('''CREATE TABLE IF NOT EXISTS teachers (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             name TEXT NOT NULL,
+            gender TEXT DEFAULT '',
             avatar TEXT DEFAULT '',
             subjects TEXT NOT NULL,
             grades TEXT NOT NULL,
@@ -27,6 +28,11 @@ def init_db():
             is_active INTEGER DEFAULT 1,
             created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
         )''')
+        # 兼容旧表：如果没有 gender 列则添加
+        try:
+            conn.execute("ALTER TABLE teachers ADD COLUMN gender TEXT DEFAULT ''")
+        except:
+            pass
         conn.execute("PRAGMA journal_mode=WAL")
 
 def query(sql, params=(), one=False):
@@ -89,10 +95,11 @@ def admin():
 @login_required
 def add_teacher():
     if request.method == 'POST':
-        execute('''INSERT INTO teachers (name, avatar, subjects, grades, price_per_hour,
+        execute('''INSERT INTO teachers (name, gender, avatar, subjects, grades, price_per_hour,
                    experience, location, phone, wechat_id, description, rating, is_active)
-                   VALUES (?,?,?,?,?,?,?,?,?,?,?,?)''',
-                (request.form.get('name'), request.form.get('avatar', ''),
+                   VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)''',
+                (request.form.get('name'), request.form.get('gender', ''),
+                 request.form.get('avatar', ''),
                  request.form.get('subjects'), request.form.get('grades'),
                  int(request.form.get('price_per_hour', 100)), request.form.get('experience', ''),
                  request.form.get('location', ''), request.form.get('phone', ''),
@@ -106,10 +113,11 @@ def add_teacher():
 @login_required
 def edit_teacher(id):
     if request.method == 'POST':
-        execute('''UPDATE teachers SET name=?, avatar=?, subjects=?, grades=?, price_per_hour=?,
+        execute('''UPDATE teachers SET name=?, gender=?, avatar=?, subjects=?, grades=?, price_per_hour=?,
                    experience=?, location=?, phone=?, wechat_id=?, description=?, rating=?, is_active=?
                    WHERE id=?''',
-                (request.form.get('name'), request.form.get('avatar', ''),
+                (request.form.get('name'), request.form.get('gender', ''),
+                 request.form.get('avatar', ''),
                  request.form.get('subjects'), request.form.get('grades'),
                  int(request.form.get('price_per_hour', 100)), request.form.get('experience', ''),
                  request.form.get('location', ''), request.form.get('phone', ''),
@@ -134,6 +142,7 @@ def delete_teacher(id):
 def api_teachers():
     subject = request.args.get('subject', '')
     grade = request.args.get('grade', '')
+    gender = request.args.get('gender', '')
     sort = request.args.get('sort', 'rating')
     sql = "SELECT * FROM teachers WHERE is_active=1"
     params = []
@@ -143,6 +152,9 @@ def api_teachers():
     if grade:
         sql += " AND grades LIKE ?"
         params.append(f'%{grade}%')
+    if gender:
+        sql += " AND gender = ?"
+        params.append(gender)
     sql += f" ORDER BY {sort} DESC"
     rows = query(sql, params)
     return jsonify([dict(r) for r in rows])
@@ -154,21 +166,21 @@ def seed():
     if existing['c'] > 0:
         return
     samples = [
-        ('张老师', '数学', '初一,初二,初三', 100, '东川二中数学教师，8年教学经验',
+        ('张老师', '男', '数学', '初一,初二,初三', 100, '东川二中数学教师，8年教学经验',
          '东川区', '138****1234', 'zhang_math', '熟悉昆明中考考点，曾带多名学生考入昆一中', 4.9),
-        ('李老师', '英语', '小学六年级,初一,初二', 90, '英语专业八级，曾在东川一中任教',
+        ('李老师', '女', '英语', '小学六年级,初一,初二', 90, '英语专业八级，曾在东川一中任教',
          '东川区', '139****5678', 'li_english', '发音标准，善于激发孩子英语兴趣', 4.7),
-        ('王老师', '物理', '初三,高一', 120, '东川高级中学物理教师',
+        ('王老师', '男', '物理', '初三,高一', 120, '东川高级中学物理教师',
          '东川区', '136****9012', 'wang_physics', '讲课通俗易懂，零基础也能听懂', 5.0),
-        ('赵老师', '语文', '小学全科', 80, '师范大学中文系毕业，现居东川区',
+        ('赵老师', '女', '语文', '小学全科', 80, '师范大学中文系毕业，现居东川区',
          '东川区', '137****3456', 'zhao_chinese', '作文辅导有独到方法，孩子进步明显', 4.6),
-        ('刘老师', '化学', '初三,高一,高二,高三', 110, '化学硕士，东川区本地人',
+        ('刘老师', '男', '化学', '初三,高一,高二,高三', 110, '化学硕士，东川区本地人',
          '东川区', '135****7890', 'liu_chem', '精通初高中化学，可带竞赛辅导', 4.8),
     ]
     for s in samples:
-        execute('''INSERT INTO teachers (name, subjects, grades, price_per_hour, experience,
+        execute('''INSERT INTO teachers (name, gender, subjects, grades, price_per_hour, experience,
                    location, phone, wechat_id, description, rating, is_active)
-                   VALUES (?,?,?,?,?,?,?,?,?,?,1)''', s)
+                   VALUES (?,?,?,?,?,?,?,?,?,?,?,1)''', s)
     print("Seed data inserted.")
 
 # ========== Main ==========
