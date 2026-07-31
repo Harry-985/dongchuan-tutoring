@@ -5,20 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>东川助学平台 - 宣传单</title>
     <style>
-        @page { size: A4; margin: 0; }
+        @page { size: 210mm 297mm; margin: 0; }
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
             font-family: "Microsoft YaHei", "PingFang SC", -apple-system, sans-serif;
             display: flex;
             justify-content: center;
+            align-items: flex-start;
             background: #e8e8e8;
             padding: 20px;
         }
 
         .flyer {
-            width: 794px;
-            min-height: 1123px;
+            width: 210mm;
+            height: 297mm;
             background: #FAFBFC;
             position: relative;
             overflow: hidden;
@@ -331,8 +332,12 @@
 
         /* Print */
         @media print {
-            body { background: white; padding: 0; }
-            .flyer { box-shadow: none; min-height: auto; }
+            body { background: white; padding: 0; margin: 0; }
+            .flyer { box-shadow: none; width: 100%; height: auto; page-break-after: avoid; }
+        }
+        /* Screen preview only */
+        @media screen {
+            .flyer { width: 210mm; height: 297mm; }
         }
     </style>
 </head>
