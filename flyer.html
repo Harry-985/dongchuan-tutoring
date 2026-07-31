@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>东川助学平台 - 宣传单</title>
+    <style>
+        @page { size: A4; margin: 0; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: "Microsoft YaHei", "PingFang SC", -apple-system, sans-serif;
+            display: flex;
+            justify-content: center;
+            background: #e0e0e0;
+            padding: 20px;
+        }
+
+        .flyer {
+            width: 794px; /* A4 */
+            height: 1123px;
+            background: white;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 30px rgba(0,0,0,0.15);
+        }
+
+        /* Top gradient area */
+        .hero {
+            background: linear-gradient(160deg, #312E81 0%, #4F46E5 40%, #7C3AED 100%);
+            color: white;
+            padding: 50px 55px 40px;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -60px;
+            right: -60px;
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.04);
+        }
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -30px;
+            left: -40px;
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.03);
+        }
+        .hero-content { position: relative; z-index: 1; }
+
+        .hero .badge {
+            display: inline-block;
+            background: rgba(255,255,255,0.15);
+            border: 1px solid rgba(255,255,255,0.25);
+            padding: 5px 16px;
+            border-radius: 20px;
+            font-size: 13px;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+        }
+        .hero h1 {
+            font-size: 44px;
+            font-weight: 800;
+            margin-bottom: 8px;
+            letter-spacing: 2px;
+        }
+        .hero h2 {
+            font-size: 18px;
+            font-weight: 400;
+            opacity: 0.9;
+            margin-bottom: 28px;
+        }
+
+        /* 3 columns in hero */
+        .features-row {
+            display: flex;
+            gap: 20px;
+        }
+        .feature-col {
+            flex: 1;
+            background: rgba(255,255,255,0.1);
+            border-radius: 12px;
+            padding: 20px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.12);
+        }
+        .feature-col .icon { font-size: 32px; margin-bottom: 8px; }
+        .feature-col h4 { font-size: 16px; margin-bottom: 4px; }
+        .feature-col p { font-size: 12px; opacity: 0.75; line-height: 1.6; }
+
+        /* Middle section */
+        .subjects {
+            padding: 40px 55px 30px;
+            text-align: center;
+        }
+        .subjects h3 {
+            font-size: 22px;
+            color: #1F2937;
+            margin-bottom: 6px;
+        }
+        .subjects .sub {
+            font-size: 13px;
+            color: #9CA3AF;
+            margin-bottom: 20px;
+        }
+        .subject-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+        }
+        .subject-tag {
+            padding: 8px 22px;
+            border-radius: 25px;
+            font-size: 15px;
+            font-weight: 500;
+            color: #4F46E5;
+            background: #EEF2FF;
+            border: 1.5px solid #C7D2FE;
+        }
+
+        /* How it works */
+        .steps {
+            background: #F9FAFB;
+            margin: 0 55px;
+            border-radius: 16px;
+            padding: 30px 35px;
+        }
+        .steps h3 {
+            text-align: center;
+            font-size: 20px;
+            color: #1F2937;
+            margin-bottom: 20px;
+        }
+        .step-row {
+            display: flex;
+            gap: 20px;
+        }
+        .step {
+            flex: 1;
+            text-align: center;
+        }
+        .step .num {
+            width: 40px; height: 40px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #4F46E5, #7C3AED);
+            color: white;
+            font-size: 20px;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 10px;
+        }
+        .step h5 { font-size: 14px; color: #1F2937; margin-bottom: 4px; }
+        .step p { font-size: 12px; color: #6B7280; line-height: 1.6; }
+
+        /* CTA */
+        .cta-section {
+            text-align: center;
+            padding: 35px 55px 0;
+        }
+        .url-box {
+            display: inline-block;
+            background: #EEF2FF;
+            padding: 14px 36px;
+            border-radius: 12px;
+            font-size: 20px;
+            font-weight: 700;
+            color: #4F46E5;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+        }
+        .url-hint {
+            font-size: 12px;
+            color: #9CA3AF;
+            margin-bottom: 20px;
+        }
+
+        /* Footer */
+        .footer {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: #1F2937;
+            color: white;
+            padding: 25px 55px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .footer .contact h5 { font-size: 12px; opacity: 0.6; margin-bottom: 4px; }
+        .footer .contact .wx { font-size: 22px; font-weight: 700; letter-spacing: 1px; }
+        .footer .qr {
+            text-align: center;
+            font-size: 11px;
+            opacity: 0.5;
+        }
+        .footer .qr .qr-box {
+            width: 60px; height: 60px;
+            background: white;
+            border-radius: 8px;
+            margin-bottom: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 10px;
+            color: #1F2937;
+        }
+
+        /* Print styles */
+        @media print {
+            body { background: white; padding: 0; }
+            .flyer { box-shadow: none; }
+        }
+    </style>
+</head>
+<body>
+    <div class="flyer">
+        <!-- Hero -->
+        <div class="hero">
+            <div class="hero-content">
+                <div class="badge">📍 昆明 · 东川</div>
+                <h1>东川区助学平台</h1>
+                <h2>本地上门家教 ｜ 微信直接联系 ｜ 完全免费</h2>
+                <div class="features-row">
+                    <div class="feature-col">
+                        <div class="icon">👨‍🏫</div>
+                        <h4>本地名师</h4>
+                        <p>东川区在职教师和优秀大学生，线下上门辅导，安全放心</p>
+                    </div>
+                    <div class="feature-col">
+                        <div class="icon">💬</div>
+                        <h4>直接联系</h4>
+                        <p>看到合适的老师，复制微信直接加好友，不抽成不收费</p>
+                    </div>
+                    <div class="feature-col">
+                        <div class="icon">💰</div>
+                        <h4>价格透明</h4>
+                        <p>课时费明码标价，¥80-150/时，拒绝隐形消费</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Subjects -->
+        <div class="subjects">
+            <h3>📘 全科覆盖</h3>
+            <p class="sub">小学到高中，主科到理科，总有一位老师适合你</p>
+            <div class="subject-grid">
+                <span class="subject-tag">📐 数学</span>
+                <span class="subject-tag">📝 语文</span>
+                <span class="subject-tag">🌍 英语</span>
+                <span class="subject-tag">⚡ 物理</span>
+                <span class="subject-tag">🧪 化学</span>
+                <span class="subject-tag">🧬 生物</span>
+                <span class="subject-tag">📜 历史</span>
+                <span class="subject-tag">🏛️ 政治</span>
+                <span class="subject-tag">🌏 地理</span>
+            </div>
+        </div>
+
+        <!-- Steps -->
+        <div class="steps">
+            <h3>三步找到好老师</h3>
+            <div class="step-row">
+                <div class="step">
+                    <div class="num">1</div>
+                    <h5>扫码/打开链接</h5>
+                    <p>手机浏览器打开<br>平台主页</p>
+                </div>
+                <div class="step">
+                    <div class="num">2</div>
+                    <h5>筛选老师</h5>
+                    <p>按科目/年级/性别<br>找到合适的老师</p>
+                </div>
+                <div class="step">
+                    <div class="num">3</div>
+                    <h5>微信联系</h5>
+                    <p>一键复制微信号<br>添加好友约课</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- CTA -->
+        <div class="cta-section">
+            <div class="url-box">🔗 dczhuxue.cn</div>
+            <p class="url-hint">（手机浏览器打开，微信内可直接点击链接）</p>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <div class="contact">
+                <h5>📱 咨询 / 入驻</h5>
+                <div class="wx">微信：A2092006305</div>
+            </div>
+            <div class="qr">
+                <div class="qr-box">二维码</div>
+                扫码访问
+            </div>
+            <div style="font-size:11px; opacity:0.4; text-align:right;">
+                昆明市东川区助学平台<br>
+                dczhuxue.cn
+            </div>
+        </div>
+    </div>
+</body>
+</html>
