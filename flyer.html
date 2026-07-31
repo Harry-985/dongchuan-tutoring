@@ -36,69 +36,52 @@
         .hero {
             background: linear-gradient(155deg, #1E1B4B 0%, #312E81 30%, #4338CA 60%, #4F46E5 100%);
             color: white;
-            padding: 55px 60px 50px;
+            padding: 28px 60px 24px;
             position: relative;
             overflow: hidden;
         }
         .hero .orb-1 {
             position: absolute;
-            top: -100px;
-            right: -60px;
-            width: 320px;
-            height: 320px;
+            top: -80px; right: -50px;
+            width: 240px; height: 240px;
             border-radius: 50%;
             background: radial-gradient(circle, rgba(139,92,246,0.35) 0%, transparent 70%);
             pointer-events: none;
         }
         .hero .orb-2 {
             position: absolute;
-            bottom: -40px;
-            left: 30%;
-            width: 180px;
-            height: 180px;
+            bottom: -30px; left: 30%;
+            width: 140px; height: 140px;
             border-radius: 50%;
             background: radial-gradient(circle, rgba(6,182,212,0.3) 0%, transparent 70%);
             pointer-events: none;
         }
         .hero .dots {
             position: absolute;
-            top: 40px;
-            right: 60px;
+            top: 20px; right: 60px;
             display: grid;
             grid-template-columns: repeat(6, 1fr);
-            gap: 12px;
-            opacity: 0.15;
+            gap: 10px; opacity: 0.12;
             pointer-events: none;
         }
         .hero .dots span {
-            width: 6px; height: 6px;
-            border-radius: 50%;
-            background: white;
+            width: 5px; height: 5px;
+            border-radius: 50%; background: white;
         }
         .hero-content { position: relative; z-index: 2; }
 
         .hero .tagline {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
+            display: inline-flex; align-items: center; gap: 6px;
             background: rgba(255,255,255,0.1);
-            backdrop-filter: blur(10px);
             border: 1px solid rgba(255,255,255,0.18);
-            padding: 7px 20px;
-            border-radius: 30px;
-            font-size: 13px;
-            letter-spacing: 3px;
-            margin-bottom: 24px;
+            padding: 5px 16px; border-radius: 30px;
+            font-size: 12px; letter-spacing: 2px;
+            margin-bottom: 16px;
         }
-        .hero .tagline::before {
-            content: '📍';
-            font-size: 14px;
-        }
+        .hero .tagline::before { content: '📍'; font-size: 13px; }
         .hero h1 {
-            font-size: 48px;
-            font-weight: 900;
-            letter-spacing: 3px;
-            margin-bottom: 10px;
+            font-size: 40px; font-weight: 900;
+            letter-spacing: 2px; margin-bottom: 6px;
             text-shadow: 0 2px 20px rgba(0,0,0,0.2);
         }
         .hero h1 span {
@@ -108,43 +91,24 @@
             background-clip: text;
         }
         .hero .slogan {
-            font-size: 17px;
-            opacity: 0.8;
-            font-weight: 300;
-            letter-spacing: 1px;
-            margin-bottom: 36px;
+            font-size: 15px; opacity: 0.8;
+            font-weight: 300; letter-spacing: 1px;
+            margin-bottom: 22px;
         }
 
         /* hero cards */
-        .hero-cards {
-            display: flex;
-            gap: 16px;
-        }
+        .hero-cards { display: flex; gap: 12px; }
         .hero-card {
             flex: 1;
             background: rgba(255,255,255,0.08);
-            backdrop-filter: blur(8px);
             border: 1px solid rgba(255,255,255,0.10);
-            border-radius: 16px;
-            padding: 22px 18px;
+            border-radius: 12px;
+            padding: 14px 12px;
             text-align: center;
-            transition: transform 0.2s;
         }
-        .hero-card .emoji {
-            font-size: 36px;
-            margin-bottom: 8px;
-            filter: drop-shadow(0 4px 8px rgba(0,0,0,0.2));
-        }
-        .hero-card h4 {
-            font-size: 15px;
-            margin-bottom: 6px;
-            letter-spacing: 0.5px;
-        }
-        .hero-card p {
-            font-size: 12px;
-            opacity: 0.7;
-            line-height: 1.7;
-        }
+        .hero-card .emoji { font-size: 28px; margin-bottom: 4px; }
+        .hero-card h4 { font-size: 14px; margin-bottom: 4px; }
+        .hero-card p { font-size: 11px; opacity: 0.7; line-height: 1.5; }
         .hero-card.highlight {
             background: rgba(255,255,255,0.15);
             border: 1px solid rgba(255,255,255,0.25);
@@ -152,181 +116,122 @@
         }
         .hero-card.highlight .badge-star {
             display: inline-block;
-            background: #F59E0B;
-            color: #1E1B4B;
-            font-size: 10px;
-            padding: 2px 8px;
-            border-radius: 10px;
-            font-weight: 700;
-            margin-top: 6px;
+            background: #F59E0B; color: #1E1B4B;
+            font-size: 9px; padding: 1px 7px;
+            border-radius: 8px; font-weight: 700;
+            margin-top: 4px;
         }
 
         /* ── Wave divider ── */
         .wave {
-            position: relative;
-            height: 40px;
+            position: relative; height: 24px;
             background: linear-gradient(155deg, #1E1B4B 0%, #4338CA 60%, #4F46E5 100%);
         }
-        .wave svg {
-            position: absolute;
-            top: -1px;
-            width: 100%;
-            height: 40px;
-        }
+        .wave svg { position: absolute; top: -1px; width: 100%; height: 24px; }
 
         /* ── Subjects section ── */
-        .section-title {
-            text-align: center;
-            padding: 40px 0 10px;
-        }
+        .section-title { text-align: center; padding: 20px 0 8px; }
         .section-title h3 {
-            font-size: 22px;
-            color: #1F2937;
-            font-weight: 800;
-            margin-bottom: 4px;
+            font-size: 20px; color: #1F2937;
+            font-weight: 800; margin-bottom: 4px;
         }
         .section-title .line {
-            width: 40px; height: 3px;
+            width: 36px; height: 3px;
             background: linear-gradient(90deg, #4F46E5, #7C3AED);
-            border-radius: 2px;
-            margin: 0 auto;
+            border-radius: 2px; margin: 0 auto;
         }
 
         .subjects-wrap {
-            padding: 20px 60px;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 10px;
+            padding: 12px 50px;
+            display: flex; flex-wrap: wrap; justify-content: center;
+            gap: 8px;
         }
         .subj-card {
-            background: white;
-            border-radius: 14px;
-            padding: 14px 20px;
-            text-align: center;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+            background: white; border-radius: 10px;
+            padding: 10px 16px; text-align: center;
+            box-shadow: 0 1px 6px rgba(0,0,0,0.04);
             border: 1px solid #F3F4F6;
-            min-width: 105px;
-            transition: transform 0.15s, box-shadow 0.15s;
+            min-width: 88px;
         }
-        .subj-card:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(79,70,229,0.12); }
-        .subj-card .icon { font-size: 28px; margin-bottom: 4px; }
-        .subj-card .name { font-size: 14px; font-weight: 600; color: #374151; }
+        .subj-card .icon { font-size: 24px; margin-bottom: 2px; }
+        .subj-card .name { font-size: 13px; font-weight: 600; color: #374151; }
 
         /* ── Steps ── */
         .steps-wrap {
-            margin: 10px 60px 20px;
-            padding: 35px 40px;
-            background: white;
-            border-radius: 20px;
-            box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+            margin: 8px 60px 12px;
+            padding: 20px 35px;
+            background: white; border-radius: 16px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.04);
             border: 1px solid #F3F4F6;
         }
         .steps-wrap h3 {
-            text-align: center;
-            font-size: 20px;
-            font-weight: 800;
-            margin-bottom: 24px;
+            text-align: center; font-size: 18px;
+            font-weight: 800; margin-bottom: 16px;
             color: #1F2937;
         }
-        .step-row {
-            display: flex;
-            gap: 30px;
-        }
-        .step {
-            flex: 1;
-            text-align: center;
-            position: relative;
-        }
+        .step-row { display: flex; gap: 24px; }
+        .step { flex: 1; text-align: center; position: relative; }
         .step + .step::before {
-            content: '→';
-            position: absolute;
-            left: -18px;
-            top: 20px;
-            font-size: 24px;
-            color: #D1D5DB;
+            content: '→'; position: absolute;
+            left: -15px; top: 16px;
+            font-size: 20px; color: #D1D5DB;
         }
         .step .num-circle {
-            width: 48px; height: 48px;
+            width: 38px; height: 38px;
             border-radius: 50%;
             background: linear-gradient(135deg, #4F46E5, #7C3AED);
-            color: white;
-            font-size: 22px;
-            font-weight: 900;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 10px;
-            box-shadow: 0 4px 15px rgba(79,70,229,0.3);
+            color: white; font-size: 18px; font-weight: 900;
+            display: flex; align-items: center; justify-content: center;
+            margin: 0 auto 8px;
+            box-shadow: 0 3px 12px rgba(79,70,229,0.3);
         }
-        .step h5 { font-size: 15px; color: #1F2937; margin-bottom: 4px; }
-        .step p { font-size: 12px; color: #6B7280; line-height: 1.7; }
+        .step h5 { font-size: 14px; color: #1F2937; margin-bottom: 2px; }
+        .step p { font-size: 11px; color: #6B7280; line-height: 1.6; }
 
         /* ── Pricing hint ── */
         .pricing-strip {
-            margin: 0 60px 20px;
-            padding: 16px 0;
-            text-align: center;
-            color: #6B7280;
-            font-size: 14px;
+            margin: 0 60px 10px;
+            padding: 8px 0; text-align: center;
+            color: #6B7280; font-size: 13px;
         }
-        .pricing-strip strong { color: #4F46E5; font-size: 18px; }
 
         /* ── CTA ── */
         .cta-box {
-            margin: 0 60px 25px;
-            padding: 28px;
+            margin: 0 60px 16px;
+            padding: 18px;
             background: linear-gradient(135deg, #EEF2FF, #F5F3FF);
-            border-radius: 18px;
-            text-align: center;
+            border-radius: 14px; text-align: center;
             border: 2px dashed #C7D2FE;
         }
         .cta-box .url {
-            font-size: 24px;
-            font-weight: 800;
-            color: #4338CA;
-            letter-spacing: 1px;
-            margin-bottom: 6px;
+            font-size: 22px; font-weight: 800;
+            color: #4338CA; letter-spacing: 1px;
+            margin-bottom: 4px;
         }
-        .cta-box .url small { font-size: 13px; font-weight: 400; color: #9CA3AF; }
-        .cta-box .hint {
-            font-size: 12px;
-            color: #9CA3AF;
-        }
+        .cta-box .url small { font-size: 12px; font-weight: 400; color: #9CA3AF; }
+        .cta-box .hint { font-size: 11px; color: #9CA3AF; }
 
         /* ── Footer ── */
         .footer-bar {
-            background: #111827;
-            color: white;
-            padding: 28px 60px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+            background: #111827; color: white;
+            padding: 20px 60px;
+            display: flex; justify-content: space-between; align-items: center;
         }
-        .footer-bar .wx-label { font-size: 11px; opacity: 0.5; letter-spacing: 1px; margin-bottom: 4px; }
-        .footer-bar .wx-id { font-size: 20px; font-weight: 700; letter-spacing: 1.5px; }
-        .footer-bar .copy {
-            font-size: 11px;
-            opacity: 0.4;
-        }
-        .footer-bar .qr-placeholder {
-            width: 65px; height: 65px;
-            background: white;
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 10px;
-            color: #9CA3AF;
+        .footer-bar .wx-label { font-size: 10px; opacity: 0.5; letter-spacing: 1px; margin-bottom: 2px; }
+        .footer-bar .wx-id { font-size: 18px; font-weight: 700; letter-spacing: 1.5px; }
+        .footer-bar .copy { font-size: 10px; opacity: 0.4; }
+        .footer-bar .qr-img {
+            width: 55px; height: 55px;
+            background: white; border-radius: 8px;
+            padding: 3px;
         }
 
         /* ── Floating accent shapes ── */
         .float-diamond {
             position: absolute;
-            width: 20px; height: 20px;
+            width: 16px; height: 16px;
             background: rgba(79,70,229,0.06);
-            border-radius: 4px;
-            transform: rotate(45deg);
+            border-radius: 3px; transform: rotate(45deg);
             pointer-events: none;
         }
 
@@ -440,8 +345,9 @@
                 <div class="wx-label">📱 咨询入驻 / 找老师</div>
                 <div class="wx-id">A2092006305</div>
             </div>
-            <div class="qr-placeholder">
-                二维码
+            <div style="text-align:center;">
+                <img class="qr-img" src="https://api.qrserver.com/v1/create-qr-code/?size=120x120&data=https://set-difficulty-full-initiative.trycloudflare.com" alt="扫码访问">
+                <div style="font-size:9px;opacity:0.45;margin-top:3px;">扫码访问</div>
             </div>
             <div class="copy">
                 昆明市东川区助学平台<br>
